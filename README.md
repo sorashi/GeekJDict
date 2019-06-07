@@ -50,6 +50,30 @@ depending on your OS distribution:
     open                       (perl-open)
     parent                     (perl-parent)
 
+<details>
+<summary>Windows installation</summary>
+
+GeekJDict **doesn't work on WSL** (Windows Subsystem for Linux) due to this issue: https://github.com/Microsoft/WSL/issues/2395
+
+If you haven't done so, install [Strawberry Perl](http://strawberryperl.com/) preferably using [Chocolatey](https://chocolatey.org/packages/StrawberryPerl). Run as admin:
+```batch
+> cinst strawberryperl -y
+```
+Then install GeekJDict's dependencies using CPAN (from perl\bin directory!). Run as admin:
+```batch
+cd C:\Strawberry\perl\bin
+cpan Archive::Zip DBD::SQLite DBI Imager PerlIO::gzip Term::ReadLine::Gnu XML::LibXML::Reader FindBin Getopt::Long Locale::Codes::Language Pod::Usage Term::ANSIColor Term::ReadLine Unicode::Normalize open parent
+```
+Now make a folder where GeekJDict will live and extract the source code there.
+Add this batch file to that folder:
+```batch
+set HOME=%userprofile%
+perl %~dp0\geekjdict %*
+```
+And add that folder to your PATH.
+
+Now proceed to the next section (Bootstrapping)
+</details>
 
 ## Bootstrapping
 
